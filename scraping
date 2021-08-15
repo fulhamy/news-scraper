@@ -3,13 +3,24 @@ from bs4 import BeautifulSoup
 import csv
 from datetime import date
 import re
+import pygsheets
 
+success_counter = 0
 today = date.today()
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
-success_counter = 0
+start = 254246
 
-for i in range(0, 300, 2):
-    uid = 254246+i
+cred_file = GDRIVE_API_CREDENTIALS
+c = pygsheets.authorize(service_file=cred_file)
+
+sh = c.create('start_'+str(start))
+nwks = sh.add_worksheet("data",rows=100000,cols=5)
+nwks.append_table(values=['Source','title', 'published_at', 'UID','published_by','body'])
+sh.share('fulham.davidc@gmail.com',role='writer',type='user')
+sh.share('Saldredev@gmail.com',role='writer',type='user')
+
+for i in range(0, 8343242, 2):
+    uid = start+i
     r1 = requests.get('https://www.abc.net.au/news/'+str(uid))
     if r1.status_code == 200:
 
@@ -42,10 +53,4 @@ for i in range(0, 300, 2):
             else: 
                 body_text = ''
 
-            year = re.findall(r"[0-9]{4}", pub_date)
-
-            with open('/Users/fulhada/Documents/scrape_results/'+year[0] +'.csv', 'a', newline='') as csvfile:
-                fieldnames = ['title', 'published_at', 'created_at', 'UID','published_by']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-                writer.writerow({'title': headline, 'published_at': pub_date, 'created_at': today, 'UID': uid, 'published_by': author})
+            with nwks.append_table(values=["ABC News",headline, pub_date, unique_id,author,body_text])
