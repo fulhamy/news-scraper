@@ -18,7 +18,8 @@ nwks.append_table(
     values=['Source', 'title', 'published_at', 'UID', 'published_by', 'body'])
 google_sheet = c.open('start_'+str(start))
 wks = google_sheet.worksheet_by_title('data')
-for i in range(0, 8343242, 2):
+success_counter = 0
+for i in range(4, 22, 2):
     uid = start+i
     r1 = requests.get('https://www.abc.net.au/news/'+str(uid))
     if r1.status_code == 200:
@@ -33,16 +34,18 @@ for i in range(0, 8343242, 2):
         body = soup1.find_all('p', class_='_1HzXw')
         if ((coverpage_news is not None) and (coverpage_news.get_text().startswith(tuple(list_var)) == False)):
             headline = coverpage_news.get_text()
+
             if date_published is not None:
                 pub_date = date_published.get_text()
             else:
                 pub_date = ''
             if bi_line is not None:
-                author = bi_line.get_text()
+                author = bi_line
             else:
                 author = ''
             if body is not None:
                 body_text = body
-            else:
+            else: 
                 body_text = ''
-            wks.append_table(values=["ABC News", headline, pub_date, author, body_text])
+            wks2 = google_sheet.worksheet_by_title('data')
+            wks2.append_table(values=["ABC News3",headline,pub_date,uid,author,body_text])
