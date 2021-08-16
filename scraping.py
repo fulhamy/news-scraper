@@ -40,11 +40,11 @@ for i in range(4, 8343244, 2):
             else:
                 pub_date = ''
             if bi_line is not None:
-                author = bi_line
+                author = bi_line.get_text()
             else:
                 author = ''
             if body is not None:
-                body_text = body
+                body_text = str(body)
             else: 
                 body_text = ''
             google_sheet.append_table(values=["ABC News",headline,pub_date,uid,author,body_text])
