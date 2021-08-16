@@ -11,7 +11,7 @@ list_var = {'AUDIO:', 'IMAGE:', 'VIDEO:'}
 today = date.today()
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
 start = 254244
-cred_file = GDRIVE_API_CREDENTIALS
+cred_file = os.environ.get('GDRIVE_API_CREDENTIALS')
 c = pygsheets.authorize(service_file=cred_file)
 sh = c.create('start_'+str(start))
 google_sheet = sh.worksheet(property='index',value=0)
