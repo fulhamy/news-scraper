@@ -15,7 +15,7 @@ cred_file = GDRIVE_API_CREDENTIALS
 c = pygsheets.authorize(service_file=cred_file)
 sh = c.create('start_'+str(start))
 google_sheet = sh.worksheet(property='index',value=0)
-google_sheet.resize(rows=500000,cols=6)
+google_sheet.resize(rows=100000,cols=6)
 google_sheet.append_table(
     values=['Source', 'title', 'published_at', 'UID', 'published_by', 'body'])
 
