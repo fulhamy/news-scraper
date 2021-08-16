@@ -1,1 +1,1 @@
-worker: scraping.py
+web: scraping.py
