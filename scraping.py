@@ -47,4 +47,4 @@ for i in range(4, 8343244, 2):
                 body_text = body
             else: 
                 body_text = ''
-            google_sheet.append_table(values=["ABC News",headline,pub_date,uid,auhor,body_text])
+            google_sheet.append_table(values=["ABC News",headline,pub_date,uid,author,body_text])
