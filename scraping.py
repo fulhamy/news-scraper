@@ -5,21 +5,23 @@ from datetime import date
 import re
 import pygsheets
 
-success_counter = 0
+
+today = date.today()
+
+list_var = {'AUDIO:', 'IMAGE:', 'VIDEO:'}
+
 today = date.today()
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
-start = 254246
-
+start = 254244
 cred_file = GDRIVE_API_CREDENTIALS
 c = pygsheets.authorize(service_file=cred_file)
 sh = c.create('start_'+str(start))
-nwks = sh.add_worksheet("data", rows=100000, cols=5)
-nwks.append_table(
+google_sheet = sh.worksheet(property='index',value=0)
+google_sheet.resize(rows=500000,cols=6)
+google_sheet.append_table(
     values=['Source', 'title', 'published_at', 'UID', 'published_by', 'body'])
-google_sheet = c.open('start_'+str(start))
-wks = google_sheet.worksheet_by_title('data')
-success_counter = 0
-for i in range(4, 22, 2):
+
+for i in range(4, 8343244, 2):
     uid = start+i
     r1 = requests.get('https://www.abc.net.au/news/'+str(uid))
     if r1.status_code == 200:
@@ -47,5 +49,4 @@ for i in range(4, 22, 2):
                 body_text = body
             else: 
                 body_text = ''
-            wks2 = google_sheet.worksheet_by_title('data')
-            wks2.append_table(values=["ABC News3",headline,pub_date,uid,author,body_text])
+            google_sheet.append_table(values=["ABC News",headline,pub_date,uid,auhor,body_text])
