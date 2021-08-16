@@ -1,1 +1,1 @@
-web: scraping.py
+web: python scraping.py
