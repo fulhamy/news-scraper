@@ -16,6 +16,7 @@ try:
 except:
   c.create('start_'+str(start))
 sh = c.open('start_'+str(start))
+sh.share('fulham.davidc@gmail.com',role='writer',type='user')
 
 ## Set cell range and headers which will be pop
 google_sheet = sh.worksheet(property='index',value=0)
