@@ -21,7 +21,7 @@ google_sheet.append_table(
 
 for i in range(4, 8343244, 2):
     uid = start+i
-    r1 = requests.get('https://www.abc.net.au/news/'+str(uid),allow_redirects=15,verify=False)
+    r1 = requests.get('https://www.abc.net.au/news/'+str(uid),allow_redirects=5,verify=False)
     if r1.status_code == 200:
         coverpage = r1.content
         soup1 = BeautifulSoup(coverpage, 'html.parser')
