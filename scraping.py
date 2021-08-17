@@ -1,17 +1,13 @@
+# module imports
 import requests
 from bs4 import BeautifulSoup
 from datetime import date
 import pygsheets
-from os import environ
+from os import environ #environment variables from Heroku
 
-
-today = date.today()
-
-list_var = {'AUDIO:', 'IMAGE:', 'VIDEO:'}
-
-today = date.today()
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
-start = 254244
+start = 254244 #unique id from the URL from which to start scraping iterations
+
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 sh = c.create('start_'+str(start))
 google_sheet = sh.worksheet(property='index',value=0)
