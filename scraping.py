@@ -5,11 +5,17 @@ from datetime import date
 import pygsheets
 from os import environ #environment variables from Heroku
 
-list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
-start = 254244 #unique id from the URL from which to start scraping iterations
-
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
-sh = c.create('start_'+str(start))
+
+list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
+start = 254246 #unique id from the URL from which to start scraping iterations
+
+try: 
+  c.open('start_'+str(start))
+except:
+  c.create('start_'+str(start))
+sh = c.open('start_'+str(start))
+
 google_sheet = sh.worksheet(property='index',value=0)
 google_sheet.resize(rows=100000,cols=6)
 google_sheet.append_table(
