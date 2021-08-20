@@ -26,7 +26,7 @@ google_sheet.append_table(
 
 ## iterate through each article, and parse data 
 
-for i in range(4, 8343244, 2):
+for i in range(4, 20, 2):
     uid = start+i
     headers = {
     'Accept-Encoding': 'gzip, deflate, sdch',
@@ -36,7 +36,7 @@ for i in range(4, 8343244, 2):
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',}
-    r1 = requests.get('https://www.abc.net.au/news/'+str(uid),allow_redirects=False,headers=headers)
+    r1 = requests.get('https://www.abc.net.au/news/'+str(uid),allow_redirects=25,headers=headers)
     
    ## Check the web url does not return an error
  
