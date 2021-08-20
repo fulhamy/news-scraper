@@ -36,7 +36,7 @@ for i in range(4, 20, 2):
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',}
-    r1 = requests.get('https://www.abc.net.au/news/'+str(uid),allow_redirects=True,headers=headers)
+    r1 = requests.get('https://www.abc.net.au/news/'+str(uid),headers=headers)
     
    ## Check the web url does not return an error
  
