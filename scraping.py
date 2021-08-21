@@ -84,5 +84,5 @@ for i in range(4, 20, 2):
                 else: 
                     body_text = ''
                 google_sheet.append_table(values=["ABC News",headline,pub_date,uid,author,body_text])
-        else: 
-            continue
+    except: 
+      continue
