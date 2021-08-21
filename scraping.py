@@ -8,7 +8,7 @@ from os import environ #environment variables from Heroku
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
-start = STARTING_VALUE #environment variable defining the url uid at which to start iterating
+start = os.environ('STARTING_VALUE') #environment variable defining the url uid at which to start iterating
 
 ## create or open a file for storing scraped data
 try: 
