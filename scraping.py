@@ -38,7 +38,7 @@ except:
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
 
 ## iterate through each article, and parse data 
-for i in range(4, 20, 2):
+for i in range(0, 8343244, 2):
     uid = initial+i
     headers = {
     'Accept-Encoding': 'gzip, deflate, sdch',
