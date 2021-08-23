@@ -4,24 +4,17 @@ from bs4 import BeautifulSoup
 from datetime import date
 import pygsheets
 from os import environ #environment variables from Heroku
+import psycopg2
 
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
 start = environ.get('STARTING_VALUE') #environment variable defining the url uid at which to start iterating
 
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
 ## create or open a file for storing scraped data
-try: 
-  sh = c.open('data_'+str(start))
-  google_sheet = sh.worksheet(property='index',value=0)
-except:
-  c.create('data_'+str(start))
-  sh = c.open('data_'+str(start))
-  sh.share('fulham.davidc@gmail.com',role='writer',type='user')
-  google_sheet = sh.worksheet(property='index',value=0)
-  google_sheet.resize(rows=100000,cols=6)
-  google_sheet.append_table(
-    values=['Source', 'title', 'published_at', 'UID', 'published_by', 'body'])
 
 
 ## create or open a file to store the most recent succesfully processed uid from the url, or the starting 
@@ -49,7 +42,7 @@ for i in range(0, 8343244, 2):
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',}
 
-    inital = initial_value.update_value('A1', start)
+    inital = initial_value.update_value('A1', uid)
     try:
         r1 = requests.get('https://www.abc.net.au/news/'+str(uid),headers=headers,timeout=3.5,)
         
