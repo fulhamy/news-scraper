@@ -4,7 +4,9 @@ from bs4 import BeautifulSoup
 from datetime import date
 import pygsheets
 from os import environ #environment variables from Heroku
-import psycopg2
+from sqlalchemy import create_engine
+
+import pandas as pd 
 
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 
@@ -13,9 +15,6 @@ start = environ.get('STARTING_VALUE') #environment variable defining the url uid
 
 DATABASE_URL = os.environ['DATABASE_URL']
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
-## create or open a file for storing scraped data
-
 
 ## create or open a file to store the most recent succesfully processed uid from the url, or the starting 
 try: 
@@ -76,6 +75,17 @@ for i in range(0, 8343244, 2):
                     body_text = str(body)
                 else: 
                     body_text = ''
-                google_sheet.append_table(values=["ABC News",headline,pub_date,uid,author,body_text])
+                    
+                news_log = {}
+                news_log["Source"] = 'ABC News'
+                news_log["title"] = headline
+                news_log["published_at"] = pub_date
+                news_log["UID"] = uid
+                news_log["published_by"] = bi_line
+                news_log["body"] = body_text
+                pd.DataFrame(data=news_log)
+                
+                df.to_sql(news_log, con = engine, if_exists='append')
+                
     except: 
       continue
