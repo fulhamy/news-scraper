@@ -24,7 +24,7 @@ except:
   c.create('initial_'+str(start))
   ish = c.open('initial_'+str(start))
   initial_value = ish.worksheet(property='index',value=0)
-  inital = initial_value.update_value('A1', start)
+  initial = initial_value.update_value('A1', start)
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
 
 ## iterate through each article, and parse data 
@@ -39,7 +39,7 @@ for i in range(0, 8343244, 2):
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',}
 
-    inital = initial_value.update_value('A1', uid)
+    initial = initial_value.update_value('A1', uid)
     try:
         r1 = requests.get('https://www.abc.net.au/news/'+str(uid),headers=headers,timeout=3.5,)
         
