@@ -12,7 +12,7 @@ c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
 start = environ.get('STARTING_VALUE') #environment variable defining the url uid at which to start iterating
 
-engine = create_engine(environ.get('DATABASE_URL'), echo = False)
+engine = create_engine(environ.get('DATABASE_URL_CUSTOM'), echo = False)
 
 ## create or open a file to store the most recent succesfully processed uid from the url, or the starting 
 try: 
