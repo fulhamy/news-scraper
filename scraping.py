@@ -81,7 +81,7 @@ for i in range(0, 8343244, 2):
                 news_log["UID"] = uid
                 news_log["published_by"] = bi_line
                 news_log["body"] = body_text
-                pd.DataFrame(data=news_log)
+                df = pd.DataFrame(data=news_log)
                 
                 df.to_sql(news_log, con = engine, if_exists='append')
                 
