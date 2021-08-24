@@ -83,7 +83,7 @@ for i in range(0, 8343244, 2):
                 news_log["body"] = body_text
                 df = pd.DataFrame(data=news_log)
                 
-                df.to_sql(news_log, con = engine, if_exists='append')
+                df.to_sql('news_log', con = engine, if_exists='append')
                 
     except: 
       continue
