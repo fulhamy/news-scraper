@@ -5,15 +5,14 @@ from datetime import date
 import pygsheets
 from os import environ #environment variables from Heroku
 from sqlalchemy import create_engine
-
-import pandas as pd 
+import pandas as pd
 
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
 start = environ.get('STARTING_VALUE') #environment variable defining the url uid at which to start iterating
 
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = environ.get(['DATABASE_URL'])
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 ## create or open a file to store the most recent succesfully processed uid from the url, or the starting 
