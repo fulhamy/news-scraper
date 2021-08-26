@@ -5,7 +5,7 @@ from datetime import date
 import pygsheets
 from os import environ #environment variables from Heroku
 from sqlalchemy import create_engine
-import pandas as pd
+from pandas import DataFrame
 
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 
