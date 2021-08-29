@@ -64,15 +64,15 @@ for i in range(0, 8343244, 2):
                 if date_published is not None:
                     pub_date = date_published.get_text()
                 else:
-                    pub_date = ''
+                    pub_date = None
                 if bi_line is not None:
                     author = bi_line.get_text()
                 else:
-                    author = ''
+                    author = None
                 if body is not None:
                     body_text = str(body)
                 else: 
-                    body_text = ''
+                    body_text = None
                     
                 news_log = {}
                 news_log["Source"] = 'ABC News'
