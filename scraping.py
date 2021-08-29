@@ -82,7 +82,7 @@ for i in range(0, 8343244, 2):
                 news_log["published_by"] = author
                 news_log["body"] = body_text
                 
-                df = DataFrame(data=news_log)
+                df = DataFrame(data=news_log,index=[0])
                 
                 df.to_sql('news_log', con = engine, if_exists='append')
                 
