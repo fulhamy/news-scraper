@@ -50,11 +50,11 @@ for i in range(0, 8343244, 2):
             coverpage = r1.content
             soup1 = BeautifulSoup(coverpage, 'html.parser')
             headline = soup1.find(
-                'h1', class_='_3mBrr I7ej6 LTJIg _3qPMD _2hFDS _2Od9e _582YK _2eB4R _3Z8IO')
+              'h1', class_='_24eQK _3O3fw _23WqP _2yZBa UOKdn _3I3Xh _2uBSR _10YQT _1lh6E')
             date_published = soup1.find(
-                'time', class_='W-g-R _14nkQ _3BwtN _2eB4R _3qdyT _3fa1F')
+              'time', class_='_3rsys _1srG4 _3PhF6 _10YQT _2Cu8q _1yU-k')
             bi_line = soup1.find(
-                'span', class_='W-g-R _3XvRm _3BwtN _2eB4R _3qdyT _7kwJ9')
+             class_='_3rsys _1cBaI _3PhF6 _10YQT _2Cu8q _7kwJ9')
             body = soup1.find_all('p', class_='_1HzXw')
             
             ## check that headline is present and does not indicate that headline does not start with list variable
