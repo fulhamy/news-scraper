@@ -10,7 +10,7 @@ from pandas import DataFrame
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
-start = int(environ.get('STARTING_VALUE')) #environment variable defining the url uid at which to start iterating
+str(start) = int(environ.get('STARTING_VALUE')) #environment variable defining the url uid at which to start iterating
 
 engine = create_engine(environ.get('DATABASE_URL'), echo = False)
 
@@ -18,19 +18,19 @@ engine = create_engine(environ.get('DATABASE_URL'), echo = False)
 try: 
   ish = c.open('initial_'+str(start))
   initial_value = ish.worksheet(property='index',value=0)
-  initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
+  str(initial) = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
 
 except:
   c.create('initial_'+str(start))
   ish = c.open('initial_'+str(start))
   initial_value = ish.worksheet(property='index',value=0)
   initial_value.update_value('A1', start)
-  initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
+  str(initial) = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
 
 ## iterate through each article, and parse data 
 for i in range(0, 8343244, 2):
-    uid = int(initial[0])+i
+    uid = int(initial)+i
     headers = {
     'Accept-Encoding': 'gzip, deflate, sdch',
     'Accept-Language': 'en-US,en;q=0.8',
