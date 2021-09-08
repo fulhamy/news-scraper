@@ -26,6 +26,7 @@ except:
   initial_value = ish.worksheet(property='index',value=0)
   initial_value.update_value('A1', start)
   initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
+  print(initial)
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
 
 ## iterate through each article, and parse data 
