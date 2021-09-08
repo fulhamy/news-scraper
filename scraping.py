@@ -10,7 +10,7 @@ from pandas import DataFrame
 c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
-start = environ.get('STARTING_VALUE') #environment variable defining the url uid at which to start iterating
+start = int(environ.get('STARTING_VALUE')) #environment variable defining the url uid at which to start iterating
 
 engine = create_engine(environ.get('DATABASE_URL'), echo = False)
 
@@ -29,7 +29,7 @@ except:
 
 ## iterate through each article, and parse data 
 for i in range(0, 8343244, 2):
-    uid = int(initial or environ.get('STARTING_VALUE'))+i
+    uid = initial+i
     headers = {
     'Accept-Encoding': 'gzip, deflate, sdch',
     'Accept-Language': 'en-US,en;q=0.8',
