@@ -87,5 +87,5 @@ for i in range(0, 8343244, 2):
                 
                 df.to_sql('news_log', con = engine, if_exists='append')
                 
-    except: 
+    except:
       continue
