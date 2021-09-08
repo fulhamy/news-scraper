@@ -24,7 +24,8 @@ except:
   c.create('initial_'+str(start))
   ish = c.open('initial_'+str(start))
   initial_value = ish.worksheet(property='index',value=0)
-  initial = initial_value.update_value('A1', start)
+  initial_value.update_value('A1', start)
+  initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
 
 ## iterate through each article, and parse data 
