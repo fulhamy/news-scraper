@@ -26,12 +26,11 @@ except:
   initial_value = ish.worksheet(property='index',value=0)
   initial_value.update_value('A1', start)
   initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
-  print(initial)
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
 
 ## iterate through each article, and parse data 
 for i in range(0, 8343244, 2):
-    uid = int(initial[0])+i
+    uid = initial[0]+i
     headers = {
     'Accept-Encoding': 'gzip, deflate, sdch',
     'Accept-Language': 'en-US,en;q=0.8',
