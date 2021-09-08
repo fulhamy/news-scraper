@@ -18,15 +18,15 @@ engine = create_engine(environ.get('DATABASE_URL'), echo = False)
 try: 
   ish = c.open('initial_'+str(start))
   initial_value = ish.worksheet(property='index',value=0)
-  initial = str(initial_value.get_value('A1', value_render='UNFORMATTED_VALUE'))
+  initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
 
 except:
   c.create('initial_'+str(start))
   ish = c.open('initial_'+str(start))
   initial_value = ish.worksheet(property='index',value=0)
   initial_value.update_value('A1', start)
-  initial = str(initial_value.get_value('A1', value_render='UNFORMATTED_VALUE'))
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
+  initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
 
 ## iterate through each article, and parse data 
 for i in range(0, 8343244, 2):
