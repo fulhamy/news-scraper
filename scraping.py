@@ -31,7 +31,7 @@ except:
 
 ## iterate through each article, and parse data 
 for i in range(0, 8343244, 2):
-    uid = int(initial)+i
+    uid = int(initial[0])+i
     headers = {
     'Accept-Encoding': 'gzip, deflate, sdch',
     'Accept-Language': 'en-US,en;q=0.8',
