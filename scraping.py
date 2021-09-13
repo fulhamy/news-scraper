@@ -17,16 +17,16 @@ engine = create_engine(environ.get('DATABASE_URL'), echo = False)
 ## create or open a file to store the most recent succesfully processed uid from the url, or the starting 
 try: 
   ish = c.open('initial_'+str(start))
-  initial_value = ish.worksheet_by_title('Sheet1')
-  initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
+  wks = ish.worksheet_by_title('Sheet1')
+  initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
 except:
   c.create('initial_'+str(start))
   ish = c.open('initial_'+str(start))
-  initial_value = ish.worksheet_by_title('Sheet1')
-  initial_value.update_value('A1', start)
+  wks = ish.worksheet_by_title('Sheet1')
+  wks.update_value('A1', start)
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
-  initial = initial_value.get_value('A1', value_render='UNFORMATTED_VALUE')
+  initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
 ## iterate through each article, and parse data 
 for i in range(0, 8343244, 2):
@@ -40,7 +40,7 @@ for i in range(0, 8343244, 2):
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',}
 
-    initial = initial_value.update_value('A1', uid)
+    initial = wks.update_value('A1', uid)
     try:
         r1 = requests.get('https://www.abc.net.au/news/'+str(uid),headers=headers,timeout=3.5,)
         
