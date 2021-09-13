@@ -18,7 +18,7 @@ engine = create_engine(environ.get('DATABASE_URL'), echo = False)
 try: 
   ish = c.open('initial_'+str(start))
   wks = ish.worksheet_by_title('Sheet1')
-  initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+  initial = wks.get_value('A1', value_render='FORMATTED_VALUE')
 
 except:
   c.create('initial_'+str(start))
@@ -26,7 +26,7 @@ except:
   wks = ish.worksheet_by_title('Sheet1')
   wks.update_value('A1', start)
   ish.share('fulham.davidc@gmail.com',role='writer',type='user')
-  initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+  initial = wks.get_value('A1', value_render='FORMATTED_VALUE')
 
 ## iterate through each article, and parse data 
 for i in range(0, 8343244, 2):
