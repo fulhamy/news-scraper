@@ -45,7 +45,7 @@ for i in range(0, 8343244, 2):
     initial = wks.update_value('A1', uid)
     try:
         r1 = requests.get('https://www.abc.net.au/news/'+str(uid),headers=headers,timeout=3.5,)
-        print("url called")
+        
         
        ## Check the web url does not return an error
      
@@ -59,6 +59,7 @@ for i in range(0, 8343244, 2):
             bi_line = soup1.find(
              class_='_3rsys _1cBaI _3PhF6 _10YQT _2Cu8q _7kwJ9')
             body = soup1.find_all('p', class_='_1HzXw')
+            print("url called"+str(uid))
             
             ## check that headline is present and does not indicate that headline does not start with list variable
             if ((headline is not None) and (headline.get_text().startswith(tuple(list_var)) == False)):
