@@ -32,7 +32,7 @@ except:
 ## iterate through each article, and parse data 
 for i in range(0, 8343244, 2):
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
-    uid = initial+i
+    uid = int(initial)+int(i)
     headers = {
     'Accept-Encoding': 'gzip, deflate, sdch',
     'Accept-Language': 'en-US,en;q=0.8',
@@ -45,7 +45,7 @@ for i in range(0, 8343244, 2):
     initial = wks.update_value('A1', uid)
     try:
         r1 = requests.get('https://www.abc.net.au/news/'+str(uid),headers=headers,timeout=3.5,)
-        
+        print("url called")
         
        ## Check the web url does not return an error
      
