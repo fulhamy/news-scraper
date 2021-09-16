@@ -1,3 +1,4 @@
+
 # module imports
 import requests
 from bs4 import BeautifulSoup
@@ -87,6 +88,7 @@ for i in range(0, 8343244, 2):
                 df = DataFrame(data=news_log,index=[0])
                 
                 df.to_sql('news_log', con = engine, if_exists='append')
-                
+        else:
+            continue
     except:
       continue
