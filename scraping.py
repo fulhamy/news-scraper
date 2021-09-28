@@ -43,7 +43,7 @@ for i in range(0, 8343244, 2):
 
     initial = wks.update_value('A1', uid)
     try:
-        r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=240.0000)
+        r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=None)
         print("url called " + str(uid) + " " + str(r1.status_code))
 
         # Check the web url does not return an error
