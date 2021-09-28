@@ -27,15 +27,14 @@ except:
     ish.share('fulham.davidc@gmail.com', role='writer', type='user')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
-print("initial value=" + str(wks.get_value('A1', value_render='UNFORMATTED_VALUE')))
+ish = c.open('initial_' + str(start))
+wks = ish.worksheet_by_title('Sheet1')
+initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
-    ish = c.open('initial_' + str(start))
-    wks = ish.worksheet_by_title('Sheet1')
-    latest = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
-    uid = latest + i
+    uid = initial + i
     headers = {
         'Accept-Encoding': 'gzip, deflate, sdch',
         'Accept-Language': 'en-US,en;q=0.8',
@@ -107,4 +106,3 @@ for i in range(0, 8343244, 2):
     except:
         print("Exit with no request, UID=" +str(uid))
         continue
-        
