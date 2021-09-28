@@ -33,9 +33,9 @@ print("initial value=" + str(wks.get_value('A1', value_render='UNFORMATTED_VALUE
 for i in range(0, 8343244, 2):
     ish = c.open('initial_' + str(start))
     wks = ish.worksheet_by_title('Sheet1')
-    initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
-    
-    uid = initial + i
+    latest = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+
+    uid = latest + i
     headers = {
         'Accept-Encoding': 'gzip, deflate, sdch',
         'Accept-Language': 'en-US,en;q=0.8',
