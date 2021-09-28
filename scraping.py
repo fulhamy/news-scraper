@@ -88,7 +88,11 @@ for i in range(0, 8343244, 2):
                 df = DataFrame(data=news_log, index=[0])
 
                 df.to_sql('news_log', con=engine, if_exists='append')
+            else:
+                print("Exit with no headline")
+                continue
         else:
+            print("Exit with error="+ str(r1.status_code))
             continue
     except:
         continue
