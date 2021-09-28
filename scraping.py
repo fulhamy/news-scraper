@@ -44,6 +44,8 @@ for i in range(0, 8343244, 2):
     print("UID created by iteration=" + str(uid))
     
     wks.update_value('A1', uid)
+
+    wks.sync()
     
     print("Check UID from spreadsheet=" + str(wks.get_value('A1', value_render='UNFORMATTED_VALUE')))
     
