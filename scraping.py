@@ -29,6 +29,7 @@ except:
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
+    initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
     uid = int(initial) + int(i)
     headers = {
         'Accept-Encoding': 'gzip, deflate, sdch',
