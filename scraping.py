@@ -45,7 +45,7 @@ for i in range(0, 8343244, 2):
     
     initial = wks.update_value('A1', uid)
     
-    print("Check UID from spreadsheet=" + wks.get_value('A1', value_render='UNFORMATTED_VALUE'))
+    print("Check UID from spreadsheet=" + str(wks.get_value('A1', value_render='UNFORMATTED_VALUE')))
     
     try:
         r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=None)
