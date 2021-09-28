@@ -50,7 +50,7 @@ for i in range(0, 8343244, 2):
     print("Check UID from spreadsheet=" + str(wks.get_value('A1', value_render='UNFORMATTED_VALUE')))
     
     try:
-        
+
         r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=None)
         print("UID=" + str(uid) + " status=" + str(r1.status_code))
 
@@ -91,11 +91,13 @@ for i in range(0, 8343244, 2):
                 df = DataFrame(data=news_log, index=[0])
 
                 df.to_sql('news_log', con=engine, if_exists='append')
+
+                print("added to DB, UID=" +str(uid))
             else:
                 print("Exit with no headline, UID=" +str(uid))
                 continue
         else:
-            print("Exit with error="+ str(r1.status_code))
+            print("Exit with error code="+ str(r1.status_code)+" UID="+str(uid) )
             continue
     except:
         print("Exit with no request, UID=" +str(uid))
