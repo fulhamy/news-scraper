@@ -27,9 +27,10 @@ except:
     ish.share('fulham.davidc@gmail.com', role='writer', type='user')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
+initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
-    ##initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+    
     uid = int(initial) + int(i)
     headers = {
         'Accept-Encoding': 'gzip, deflate, sdch',
