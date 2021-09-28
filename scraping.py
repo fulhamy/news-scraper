@@ -29,7 +29,7 @@ except:
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
-    initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+    ##initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
     uid = int(initial) + int(i)
     headers = {
         'Accept-Encoding': 'gzip, deflate, sdch',
@@ -94,6 +94,6 @@ for i in range(0, 8343244, 2):
         else:
             print("Exit with error="+ str(r1.status_code))
             continue
-    except:
+        except:
         print("Exit with no request, UID=" +str(uid))
         continue
