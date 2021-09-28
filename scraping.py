@@ -40,11 +40,12 @@ for i in range(0, 8343244, 2):
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
         'Cache-Control': 'max-age=10',
         'Connection': 'keep-alive', }
-    print("UID for search" + str(uid))
+
+    print("UID created by iteration=" + str(uid))
     
     initial = wks.update_value('A1', uid)
     
-    print(wks.get_value('A1', value_render='UNFORMATTED_VALUE'))
+    print("Check UID from spreadsheet=" + wks.get_value('A1', value_render='UNFORMATTED_VALUE'))
     
     try:
         r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=None)
