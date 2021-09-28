@@ -94,6 +94,6 @@ for i in range(0, 8343244, 2):
         else:
             print("Exit with error="+ str(r1.status_code))
             continue
-        except:
+    except:
         print("Exit with no request, UID=" +str(uid))
         continue
