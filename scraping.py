@@ -89,10 +89,11 @@ for i in range(0, 8343244, 2):
 
                 df.to_sql('news_log', con=engine, if_exists='append')
             else:
-                print("Exit with no headline")
+                print("Exit with no headline, UID=" +str(uid))
                 continue
         else:
             print("Exit with error="+ str(r1.status_code))
             continue
     except:
+        print("Exit with no request, UID=" +str(uid))
         continue
