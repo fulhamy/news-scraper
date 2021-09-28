@@ -29,7 +29,7 @@ except:
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
-    
+    initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
     uid = initial + i
     headers = {
         'Accept-Encoding': 'gzip, deflate, sdch',
@@ -43,11 +43,12 @@ for i in range(0, 8343244, 2):
 
     print("UID created by iteration=" + str(uid))
     
-    initial = wks.update_value('A1', uid)
+    wks.update_value('A1', uid)
     
     print("Check UID from spreadsheet=" + str(wks.get_value('A1', value_render='UNFORMATTED_VALUE')))
     
     try:
+        
         r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=None)
         print("UID=" + str(uid) + " status=" + str(r1.status_code))
 
