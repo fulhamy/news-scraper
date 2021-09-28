@@ -40,7 +40,7 @@ for i in range(0, 8343244, 2):
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
         'Cache-Control': 'max-age=0',
         'Connection': 'keep-alive', }
-
+    print("UID " + str(uid))
     initial = wks.update_value('A1', uid)
     try:
         r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=None)
