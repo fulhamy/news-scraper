@@ -1,4 +1,4 @@
-# python 
+# ABC News Scraper
 
 This script searches for the below data fields in the Australian Broadcasting Corporation's online news site, ABC News Online: https://www.abc.net.au/news/. 
 
