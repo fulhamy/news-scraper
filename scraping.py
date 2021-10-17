@@ -88,7 +88,7 @@ for i in range(0, 8343244, 2):
                     body_text = str(body)
                 else:
                     body_text = None
-
+                now = datetime.now()
                 news_log = {"Source": 'ABC News', "title": headline, "published_at": pub_date, "UID": uid,
                             "published_by": author, "body": body_text, "created_at": now.strftime("%d/%m/%Y %H:%M:%S")}
 
