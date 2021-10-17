@@ -90,7 +90,7 @@ for i in range(0, 8343244, 2):
                     body_text = None
 
                 news_log = {"Source": 'ABC News', "title": headline, "published_at": pub_date, "UID": uid,
-                            "published_by": author, "body": body_text}
+                            "published_by": author, "body": body_text, "created_at": date.today()}
 
                 df = DataFrame(data=news_log, index=[0])
 
