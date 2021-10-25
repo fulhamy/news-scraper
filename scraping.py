@@ -45,6 +45,8 @@ print("UID unformatted from sheet=" + str(initial))
 print("UID formatted from sheet=" + str(initial2))
 print("UID no format=" + str(initial3))
 print("UID all values=" + str(initial4))
+print("UID dataframe=" + str(wks.get_as_df()))
+
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
