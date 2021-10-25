@@ -29,7 +29,9 @@ except:
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
 ish = c.open('initial_' + str(start))
+print("Spreadsheet ID = "+ str(ish.id))
 wks = ish.worksheet_by_title('Sheet1')
+print("Worksheet ID = "+ str(wks.id))
 initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 initial2 = wks.get_value('A1', value_render='FORMATTED_VALUE')
 initial3 = wks.get_value('A1')
