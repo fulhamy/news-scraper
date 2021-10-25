@@ -30,7 +30,10 @@ except:
 
 ish = c.open('initial_' + str(start))
 wks = ish.worksheet_by_title('Sheet1')
-initial = int(wks.get_value('A1', value_render='UNFORMATTED_VALUE'))
+initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+initial2 = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+print("UID unformatted from sheet=" + str(initial))
+print("UID formatted from sheet=" + str(initial2))
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
