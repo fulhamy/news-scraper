@@ -31,6 +31,7 @@ except:
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
     print("exception print: "+ str(initial))
     
+c.delete('11eiWVdKabC-V--XDQsFKsxezOK4blTn5fVFiqX8q3yE')
 ish = c.open('initial_' + str(start))
 wks = ish.worksheet_by_title('Sheet1')
 initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
