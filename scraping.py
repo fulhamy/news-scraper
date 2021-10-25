@@ -20,6 +20,7 @@ try:
     wks = ish.worksheet_by_title('Sheet1')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
     print("exception print: "+ str(initial))
+    ish.share('fulham.davidc@gmail.com', role='writer', type='user')
 
 except:
     c.create('initial_' + str(start))
