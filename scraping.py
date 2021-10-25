@@ -18,6 +18,7 @@ try:
     ish = c.open('initial_' + str(start))
     wks = ish.worksheet_by_title('Sheet1')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+    ish.share('fulham.davidc@gmail.com', role='owner', type='user')
 
 except:
     c.create('initial_' + str(start))
