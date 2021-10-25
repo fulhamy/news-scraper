@@ -34,6 +34,9 @@ ish = c.open('initial_' + str(start))
 wks = ish.worksheet_by_title('Sheet1')
 initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 print("exception print: "+ str(initial))
+print(wks.get_value('A1', value_render='UNFORMATTED_VALUE'))
+print(ish.id)
+print(ish.title)
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
