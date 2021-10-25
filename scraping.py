@@ -10,7 +10,6 @@ c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
 start = environ.get('STARTING_VALUE')  # environment variable defining the url uid at which to start iterating
-print(start)
 
 engine = create_engine(environ.get('DATABASE_URL'), echo=False)
 
@@ -19,8 +18,6 @@ try:
     ish = c.open('initial_' + str(start))
     wks = ish.worksheet_by_title('Sheet1')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
-    print("exception print: "+ str(initial))
-    ish.share('fulham.davidc@gmail.com', role='writer', type='user')
 
 except:
     c.create('initial_' + str(start))
@@ -29,19 +26,14 @@ except:
     wks.update_value('A1', start)
     ish.share('fulham.davidc@gmail.com', role='writer', type='user')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
-    print("exception print: "+ str(initial))
-    
-c.spreadsheet.delete('11eiWVdKabC-V--XDQsFKsxezOK4blTn5fVFiqX8q3yE')
+
 ish = c.open('initial_' + str(start))
 wks = ish.worksheet_by_title('Sheet1')
 initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
-print("exception print: "+ str(initial))
-print(wks.get_value('A1', value_render='UNFORMATTED_VALUE'))
-print(ish.id)
-print(ish.title)
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
+
     uid = initial + i
     headers = {
         'Accept-Encoding': 'gzip, deflate, sdch',
@@ -96,7 +88,7 @@ for i in range(0, 8343244, 2):
                     body_text = str(body)
                 else:
                     body_text = None
-                    
+
                 news_log = {"Source": 'ABC News', "title": headline, "published_at": pub_date, "UID": uid,
                             "published_by": author, "body": body_text}
 
