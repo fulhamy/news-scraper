@@ -19,6 +19,7 @@ try:
     ish = c.open('initial_' + str(start))
     wks = ish.worksheet_by_title('Sheet1')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+    print("exception print: "+ str(initial))
 
 except:
     c.create('initial_' + str(start))
@@ -27,6 +28,7 @@ except:
     wks.update_value('A1', start)
     ish.share('fulham.davidc@gmail.com', role='writer', type='user')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
+    print("exception print: "+ str(initial))
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
