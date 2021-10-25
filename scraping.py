@@ -40,9 +40,11 @@ print("Worksheet ID3 = "+ str(wks2.id))
 initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 initial2 = wks.get_value('A1', value_render='FORMATTED_VALUE')
 initial3 = wks.get_value('A1')
+initial4 = wks.get_values()
 print("UID unformatted from sheet=" + str(initial))
 print("UID formatted from sheet=" + str(initial2))
 print("UID no format=" + str(initial3))
+print("UID all values=" + str(initial4))
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
