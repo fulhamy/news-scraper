@@ -28,26 +28,6 @@ except:
     ish.share('fulham.davidc@gmail.com', role='writer', type='user')
     initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
-ish = c.open('initial_' + str(start))
-print("Spreadsheet ID = "+ str(ish.id))
-wks = ish.worksheet_by_title('Sheet1')
-wks2 = ish.worksheet('index',0)
-wks3 = ish.worksheet('title','Sheet1')
-print("Worksheet ID = "+ str(wks.id))
-print("Worksheet title = "+ str(wks.title))
-print("Worksheet ID2 = "+ str(wks2.id))
-print("Worksheet ID3 = "+ str(wks2.id))
-initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
-initial2 = wks.get_value('A1', value_render='FORMATTED_VALUE')
-initial3 = wks.get_value('A1')
-initial4 = wks.get_values('A1','A1')
-print("UID unformatted from sheet=" + str(initial))
-print("UID formatted from sheet=" + str(initial2))
-print("UID no format=" + str(initial3))
-print("UID all values=" + str(initial4))
-print("UID dataframe=" + str(wks.get_as_df()))
-
-
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
     uid = initial + i
