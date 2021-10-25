@@ -33,7 +33,7 @@ initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
 # iterate through each article, and parse data
 for i in range(0, 8343244, 2):
-    uid = int(initial) + int(i)
+    uid = initial + i
     headers = {
         'Accept-Encoding': 'gzip, deflate, sdch',
         'Accept-Language': 'en-US,en;q=0.8',
