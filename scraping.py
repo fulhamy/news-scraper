@@ -13,7 +13,8 @@ start = environ.get('STARTING_VALUE')  # environment variable defining the url u
 
 engine = create_engine(environ.get('DATABASE_URL'), echo=False)
 
-# create or open a file to store the most recent succesfully processed uid from the url, or the starting
+# create or open a file to store the most recent succesfully processed uid from the url, or the starting UID from the environment variables
+
 try:
     ish = c.open('initial_' + str(start))
     wks = ish.worksheet_by_title('Sheet1')
@@ -32,7 +33,8 @@ ish = c.open('initial_' + str(start))
 wks = ish.worksheet_by_title('Sheet1')
 initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
-# iterate through each article, and parse data
+# iterate through each article UID 
+
 for i in range(0, 8343244, 2):
 
     uid = initial + i
@@ -54,6 +56,7 @@ for i in range(0, 8343244, 2):
     
     print("Check UID from spreadsheet=" + str(wks.get_value('A1', value_render='UNFORMATTED_VALUE')))
     
+    # 
     try:
 
         r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=None)
@@ -73,7 +76,7 @@ for i in range(0, 8343244, 2):
             
 
             # check that headline is present and does not indicate that headline does not start with list variable
-            # here I just printed every var to see their value
+            
             if (headline is not None) and (headline.get_text().startswith(tuple(list_var)) is False):
                 headline = headline.get_text()
 
