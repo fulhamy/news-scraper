@@ -11,25 +11,13 @@ c = pygsheets.authorize(service_account_env_var='GDRIVE_API_CREDENTIALS')
 list_var = {"AUDIO:", "IMAGE:", "VIDEO:"}
 start = environ.get('STARTING_VALUE')  # environment variable defining the url uid at which to start iterating
 
+spreadsheet_id = environ.get('SPREADSHEET_ID')
+
 engine = create_engine(environ.get('DATABASE_URL'), echo=False)
 
 # create or open a file to store the most recent succesfully processed uid from the url, or the starting UID from the environment variables
 
-try:
-    ish = c.open('initial_' + str(start))
-    wks = ish.worksheet_by_title('Sheet1')
-    initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
-    ish.share('fulham.davidc@gmail.com', role='owner', type='user')
-
-except:
-    c.create('initial_' + str(start))
-    ish = c.open('initial_' + str(start))
-    wks = ish.worksheet_by_title('Sheet1')
-    wks.update_value('A1', start)
-    ish.share('fulham.davidc@gmail.com', role='writer', type='user')
-    initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
-
-ish = c.open('initial_' + str(start))
+ish = c.open_by_key(spreadsheet_id)
 wks = ish.worksheet_by_title('Sheet1')
 initial = wks.get_value('A1', value_render='UNFORMATTED_VALUE')
 
