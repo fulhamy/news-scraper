@@ -59,7 +59,7 @@ for i in range(0, 8343244, 2):
             headline = soup1.find('h1')
             # date_published = soup1.find('time', class_='_3rsys _1srG4 _3PhF6 _10YQT _2Cu8q _1yU-k')
             date_published = soup1.find('time')
-            bi_line = soup1.find(class_='_3rsys _1cBaI _3PhF6 _10YQT _2Cu8q _7kwJ9')
+            bi_line = soup1.find('a' ,class_='fmhNa nsZdE _2c2Zy _1tOey _5sx7T')
             body = soup1.find_all('p', class_='_1HzXw')
             
 
