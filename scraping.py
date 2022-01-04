@@ -47,7 +47,7 @@ for i in range(0, 8343244, 2):
     # 
     try:
 
-        r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=None)
+        r1 = requests.get('https://www.abc.net.au/news/' + str(uid), headers=headers, timeout=(5, 30))
         print("UID=" + str(uid) + " status=" + str(r1.status_code))
 
         # Check the web url does not return an error
